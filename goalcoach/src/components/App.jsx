@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
+import { firebaseApp } from '../firebase';
+import { browserHistory } from 'react-router';
 
 class App extends Component {
-	constructor(props){
-		super(props);
+
+	signOut(){
+		firebaseApp.auth().signOut();
+		browserHistory.push('/signin');
 	}
 
 	render(){
 		return(
-			<div> Welcome to GoalCoach</div>
+			<div
+				className="userArea"
+			>
+			<h3> Hello User! Welcome to GoalCoach</h3> 
+			<button
+				className="btn btn-danger"
+				onClick={ () => this.signOut()}
+			>
+			Sign Out
+			</button>
+			</div>
 		)
 	}
 }
