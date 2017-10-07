@@ -1,29 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { firebaseApp } from '../firebase';
-import { browserHistory } from 'react-router';
+import AddGoal from './AddGoal';
 
 class App extends Component {
 
 	signOut(){
 		firebaseApp.auth().signOut();
-		browserHistory.push('/signin');
 	}
 
 	render(){
 		return(
-			<div
-				className="userArea"
-			>
-			<h3> Hello User! Welcome to GoalCoach</h3> 
-			<button
-				className="btn btn-danger"
-				onClick={ () => this.signOut()}
-			>
-			Sign Out
-			</button>
+			<div>
+				<h3>Goals</h3>
+				<AddGoal /> 
+				<div>Goal List</div> 
+				<button
+					className="btn btn-danger"
+					onClick={ () => this.signOut()}
+				>
+				Sign Out
+				</button>
 			</div>
 		)
 	}
 }
 
-export default App;
+
+function mapStateToProps(state){
+	console.log('state', state);
+	return {}
+}
+
+export default connect(mapStateToProps, null)(App);
