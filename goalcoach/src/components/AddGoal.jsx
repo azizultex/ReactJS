@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { goalDB } from '../firebase';
 
 class AddGoal extends Component {
@@ -10,8 +11,10 @@ class AddGoal extends Component {
 	}
 
 	addGoal(){
-		console.log('state', this.state);
-		goalDB.push({ email : 'test@email.com', title: this.state.title });
+		// console.log('state', this.state);
+		const { title } = this.state;
+		const { email } = this.props.user;
+		goalDB.push({ email, title });
 	}
 
 	render(){
@@ -37,4 +40,11 @@ class AddGoal extends Component {
 	}
 }
 
-export default AddGoal;
+function mapStateToProps(state){
+	const { user } = state;
+	console.log( 'State in addGoal.jsx', state);
+	return {
+		user
+	}
+}
+export default connect(mapStateToProps, null)(AddGoal);
