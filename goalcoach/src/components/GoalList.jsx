@@ -4,6 +4,8 @@ import { goalDB } from '../firebase';
 import { setGoals } from '../actions';
 
 
+
+
 class GoalList extends Component {
 	componentDidMount(){
 		goalDB.on('value', snap => {
