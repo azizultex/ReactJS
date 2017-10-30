@@ -1,5 +1,8 @@
 # Learn Redux
 
+HOW DOES REDUX WORKS? https://www.youtube.com/watch?v=0ix_QLPkYhI
+
+
 A simple React + Redux implementation. This will be turned into a free video series once the app is totally fleshed out.
 
 ## Running
